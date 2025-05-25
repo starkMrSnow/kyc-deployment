@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: kyc-service
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+  datasource:
+    url:  jdbc:postgresql://localhost:5432/microservices_db
+    password: postgres
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+server:
+  port: 8081
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:9099/eureka
+
+
+rabbitmq:
+  queue:
+    name: email-queue
+  routing:
+    key:  email_key
+  exchange: 
+    name: email_exchange
