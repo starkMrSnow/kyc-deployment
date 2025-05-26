@@ -40,24 +40,17 @@ public class KycController {
 
 
     @PutMapping("/upload-email/{customerId}")
-    public ResponseEntity<?> emailUpload(
+    public int emailUpload(
         @RequestParam String email,
         @PathVariable Long customerId){
-            return kycService.saveCustomerEmail(email, customerId);
+            int status =  kycService.saveCustomerEmail(email, customerId);
+            producer.sendMessage(email);
+            return status;
     }
 
     
      @GetMapping("/view-customer-details/{customerId}")
     public ResponseEntity<?> viewCustomerDetails(@PathVariable Long customerId){
         return kycService.selectCustomerDetails(customerId);
-    }
-
-
-    @GetMapping("/verify-email/{customerId}")
-    public String sendConfirmationCode(@PathVariable Long customerId){
-        String email = kycService.getEmail(customerId);
-        producer.sendMessage(email);
-        return "Email sent successfully";
-        
     }
 }

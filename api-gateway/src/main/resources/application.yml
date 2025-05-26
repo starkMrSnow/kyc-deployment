@@ -6,10 +6,17 @@ spring:
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       routes:
+
         - id: kyc-service
           uri:  lb://kyc-service
           predicates:
             - Path=/kyc/**
+
+        - id: report-service
+          uri:  lb://report-service
+          predicates:
+            - Path=/admin/**
+            
         - id: email-service
           uri:  lb://email-service
           predicates:

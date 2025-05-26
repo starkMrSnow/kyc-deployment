@@ -83,22 +83,13 @@ public class KYCService {
        return url;
     }
 
-
-    public String getEmail(Long id){
-        Customer customer = new Customer();
-        customer = repo.getReferenceById(id);
-        return customer.getEmail();
-    }
-
-    public ResponseEntity<?> saveCustomerEmail(String email, Long customerId){
+    public int saveCustomerEmail(String email, Long customerId){
         Customer customer = new Customer();
 
         customer = repo.getReferenceById(customerId);
         customer.setEmail(email);
         repo.save(customer);
-
-        CustomerDTO dto = new CustomerDTO(customer);
-        return new ResponseEntity<>(dto, HttpStatus.ACCEPTED);
+        return 200;
     }
 
 

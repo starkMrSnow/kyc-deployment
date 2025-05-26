@@ -22,7 +22,7 @@ services:
     volumes: 
       - kyc-data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "5434:5432"
 
 
   rabbitmq:
@@ -59,6 +59,38 @@ services:
       - eureka-server
       - api-gateway
       - rabbitmq
+    
+  report-service:
+    build:  ./kyc-backend-report
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_DATASOURCE_URL:  jdbc:postgresql://postgres:5432/kyc_db
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_JPA_HIBERNATE_DDL-AUTO:  update
+    depends_on:
+      - eureka-server
+      - api-gateway
+      - postgres
+
+      
+  kyc-report-frontend:
+      build: ./kyc-report-front-end
+      ports:
+      - "4201:80"
+      depends_on:
+        - report-service
+        
+    
+
+  kyc-frontend:
+    build: ./KYC-customer-frontend
+    ports:
+    - "4200:80"
+    depends_on:
+      - kyc-service
+      - email-service
 
 
 volumes:
