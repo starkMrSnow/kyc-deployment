@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: email-service
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+
+server:
+  port: 8082
+  address: 0.0.0.0
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:9099/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:  health
+  endpoint:
+    health:
+      show-details: always
+  server:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: "*"
+
+rabbitmq:
+  queue:
+    name: email-queue
+  routing:
+    key:  email_key
+  exchange: 
+    name: email_exchange
