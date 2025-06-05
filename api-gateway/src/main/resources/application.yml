@@ -21,6 +21,22 @@ spring:
           uri:  lb://email-service
           predicates:
             - Path=/email/**
+
+        - id: kyc-health
+          uri:  lb://kyc-service
+          predicates:
+            - Path=/health/kyc
+          filters:
+            - RewritePath=/health/kyc, /actuator/health
+
+
+        - id: email-health
+          uri:  lb://email-service
+          predicates:
+            - Path=/health/email
+          filters:
+            - RewritePath=/health/email, /actuator/health
+
       globalcors:
         cors-configurations:
           '[/**]':
@@ -32,6 +48,7 @@ spring:
 
 server:
   port: 8080
+  address: 0.0.0.0
 
 
 eureka:

@@ -1,28 +1,28 @@
 package com.giktek.kyc_service.Controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Map;
+
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.giktek.kyc_service.Entities.Customer;
-import com.giktek.kyc_service.Producer.RabbitMQProducer;
+// import com.giktek.kyc_service.Producer.RabbitMQProducer;
 import com.giktek.kyc_service.Services.KYCService;
 
 @RestController
 @RequestMapping("/kyc")
+@CrossOrigin("*")
 public class KycController {
 
-    @Autowired
     KYCService kycService;
 
-    private RabbitMQProducer producer;
-
-    public KycController(RabbitMQProducer producer) {
-        this.producer = producer;
+    public KycController(KYCService kycService) {
+        this.kycService = kycService;
     }
 
     @PostMapping("/new-customer")
-    public ResponseEntity<Customer> newCustomer(@RequestBody Customer customer){
+    public ResponseEntity<Map<String, Long>> newCustomer(@RequestBody Customer customer){
         System.out.println(customer.toString());
         return kycService.createCustomerAccount(customer);
     }
@@ -40,12 +40,10 @@ public class KycController {
 
 
     @PutMapping("/upload-email/{customerId}")
-    public int emailUpload(
+    public ResponseEntity<Map<String, Long>> emailUpload(
         @RequestParam String email,
         @PathVariable Long customerId){
-            int status =  kycService.saveCustomerEmail(email, customerId);
-            producer.sendMessage(email);
-            return status;
+            return kycService.saveCustomerEmail(email, customerId);
     }
 
     

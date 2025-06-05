@@ -1,12 +1,12 @@
 services:
 
   eureka-server:
-    image:  cecillwala/kyc-eureka-registry
+    image:  cecillwala/kyc-eureka-server
     ports:
       - "9099:9099"
     
   api-gateway:
-    image: cecillwala/kyc-api-gateway
+    image:  cecillwala/kyc-api-gateway
     ports: 
       - "8080:8080"
     depends_on:
@@ -52,7 +52,7 @@ services:
 
 
   email-service:
-    image: cecillwala/kyc-email-service
+    image:  cecillwala/kyc-email-service
     ports:
       - "8082:8082"
     depends_on:
@@ -61,7 +61,7 @@ services:
       - rabbitmq
     
   report-service:
-    build:  ./kyc-backend-report
+    image: cecillwala/kyc-report-backend
     ports:
       - "8083:8083"
     environment:
@@ -76,7 +76,7 @@ services:
 
       
   kyc-report-frontend:
-      build: ./kyc-report-front-end
+      image: cecillwala/kyc-report-frontend
       ports:
       - "4201:80"
       depends_on:
@@ -85,7 +85,7 @@ services:
     
 
   kyc-frontend:
-    build: ./KYC-customer-frontend
+    image: cecillwala/kyc-frontend
     ports:
     - "4200:80"
     depends_on:

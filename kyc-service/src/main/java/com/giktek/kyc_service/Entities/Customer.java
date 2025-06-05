@@ -25,11 +25,10 @@ public class Customer {
     @Column(nullable=false)
     private String employmentStatus;
 
-    @Column(nullable =false, unique = true)
+    @Column(nullable =false, unique=true)
     private String phoneNumber;
 
-    @Column(nullable=true)
-    private String selfieImageUrl = "https://res.cloudinary.com/drkmm8xka/image/upload/v1747140876/file.jpg";
+    private String selfieImageUrl = "https://res.cloudinary.com/drkmm8xka/image/upload/v1748349238/file_blsie5.jpg";
 
     @Column(nullable=true)
     private String frontPhotoIdUrl = null;
@@ -37,7 +36,7 @@ public class Customer {
     @Column(nullable=true)
     private String backPhotoIdUrl = null;
 
-    @Column(nullable=true)
+    @Column(nullable=true, unique = true)
     private String email = null;
 
     private boolean isCaptured = false;
