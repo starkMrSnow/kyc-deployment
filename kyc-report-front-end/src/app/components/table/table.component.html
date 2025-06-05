@@ -1,0 +1,88 @@
+
+<div>
+  <div class="custom-table-container">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.customerId }}</td>
+          <td>
+            <div class="profile-container profile-wrapper">
+              <img
+                class="profile-pic"
+                [src]="customer.selfieImageUrl"
+                alt="Profile"
+                (click)="openImage(customer)"
+              />
+              <span>{{ customer.firstName + ' ' + customer.lastName }}</span>
+            </div>   
+     </td>
+          <td>
+            <button class="details-btn" (click)="showDetails(customer)">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+   <!-- modal for health status -->
+  <!-- Service Health Modal -->
+<div>
+  <div class="health-status-box">
+    <h3>Service Health</h3>
+    <p>Email Service: 
+      <span [class.up]="emailStatus() === 'UP'" [class.down]="emailStatus() === 'DOWN'">
+        {{ emailStatus() }}
+      </span>
+    </p>
+    <p>KYC Service: 
+      <span [class.up]="kycStatus() === 'UP'" [class.down]="kycStatus() === 'DOWN'">
+        {{ kycStatus() }}
+      </span>
+    </p>
+  </div>
+</div>
+
+</div>
+
+<!-- Details Modal -->
+<div class="modal-overlay" *ngIf="selectedPerson">
+  <div  id = "pdfContent" class="modal">
+    <h2>{{ selectedPerson.firstName + ' ' + selectedPerson.lastName }}'s Details</h2>
+    <form class="person-form">
+      <label>Email: <input type="email" [value]="selectedPerson.email" readonly /></label>
+      <label>Phone Number: <input type="text" [value]="selectedPerson.phoneNumber" readonly /></label>
+      <label>Date of Birth: <input type="text" [value]="selectedPerson.dateOfBirth" readonly /></label>
+      <label>Status: <input type="text" [value]="selectedPerson.employmentStatus" readonly /></label>
+      <label>County: <input type="text" [value]="selectedPerson.county" readonly /></label>
+      <label>Front ID Photo:
+        <img [src]="selectedPerson?.frontPhotoIdUrl" alt="ID" class="id-photo" />
+      </label>
+      <label>Back ID Photo:
+        <img [src]="selectedPerson.backPhotoIdUrl" alt="ID" class="id-photo" />
+      </label>
+
+      <div class="modal-footer">
+        <button type="button" class="generate-btn" (click)="generatePDF()">Generate PDF</button>
+        <button class="close-btn" (click)="closeModal()">Close</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Image Modal for Profile -->
+<div class="modal-overlay" *ngIf="selectedImage" >
+  <div class="image-modal-box">
+  <button class="image-close-btn" (click)="closeImage()">X</button>
+  <img [src]="selectedImage.selfieImageUrl" alt="Full Profile" class="full-image" />
+  <button class="remove-btn" (click)="removeSelfie(selectedImage.email)">Remove Image</button> 
+</div>
+
+
+</div>

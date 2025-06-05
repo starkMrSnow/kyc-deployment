@@ -1,0 +1,277 @@
+
+table{
+   font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+.custom-table-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.custom-table thead {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+.custom-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.details-btn {
+  background-color: #3f51b5;
+  color: white;
+  font-size: 1re;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.details-btn:hover {
+  background-color: #021bbb;
+}
+.dimmed {
+  filter: blur(2px) brightness(0.9);
+  pointer-events: none;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-height: 90vh; /* Limit height to viewport */
+  overflow-y: auto;
+}
+
+.person-form {
+  display: flex;
+  flex-direction: column;
+  
+ 
+}
+
+.person-form label {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.person-form input {
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border: 1px #ccc;
+  border-radius: 6px;
+}
+
+.id-photo {
+  margin-top: 10px;
+  width: 300px;
+  height: 200px;
+  border-radius: 4px;
+  display: block;
+}
+
+.modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.generate-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.close-btn {
+  background-color: #f44336;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #ccc;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.2);
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  // z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Details modal */
+.modal {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 90%;
+  padding: 20px; 
+  max-width: 800px;
+   margin: auto;
+}
+
+.person-form label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.person-form input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.id-photo {
+  display: flex;
+  margin-top: 10px;
+  max-width: 100%;
+  height: autox;
+  border-radius: 4px;
+}
+
+/* Footer buttons */
+.modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.generate-btn,
+.close-btn,
+.remove-btn {
+  padding: 8px 12px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.generate-btn {
+  background-color: #4caf50;
+}
+
+.close-btn {
+  background-color: #d33a3a;
+}
+
+/* Image modal */
+.image-modal-box {
+  position: relative;
+
+}
+
+.full-image {
+  width: 350px;        
+  height: 350px;        
+  object-fit: cover;    
+  border-radius: 5px;
+  
+}
+
+.remove-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #e74c3c;
+}
+.image-close-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e0d8d7;
+}
+.health-status-box {
+  top: 10vw;
+  background: #3f51b5;
+  left: 50px;
+  padding: 20px;
+  border-radius: 10px;
+  width: 220px;
+  max-width: 95%;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: fixed;
+}
+
+.health-status-box span.up {
+  color: green;
+  font-weight: bold;
+}
+
+.health-status-box span.down {
+  color: red;
+  font-weight: bold;
+}
+
