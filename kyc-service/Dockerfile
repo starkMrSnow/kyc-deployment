@@ -2,6 +2,6 @@ FROM eclipse-temurin:24
 
 WORKDIR /app
 
-COPY target/*.jar /app/app.jar
+COPY target/kyc-service-0.0.1-SNAPSHOT.jar /app/app.jar
 
 CMD [ "java", "-jar", "app.jar" ]

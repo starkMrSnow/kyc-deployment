@@ -9,7 +9,7 @@ COPY package*.json ./
 RUN npm install --force
 
 COPY . ./
-RUN ng build  --configuration=production
+RUN ng build  --configuration=production --base-href=/report/
 
 # Stage 2: Serve with NGINX
 FROM nginx:alpine

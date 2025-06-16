@@ -26,7 +26,7 @@ interface DocumentResponse {
   providedIn: 'root'//makes the service available in the app
 })
 export class KycService {
-  private apiUrl = 'http://192.168.1.12:8080/kyc';//base url for the backend
+  private apiUrl = 'https://giktekkyc.org/kyc';//base url for the backend
   private route = inject(Router);
 
   constructor(private http: HttpClient) {}
