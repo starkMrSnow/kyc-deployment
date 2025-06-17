@@ -7,7 +7,7 @@ spring:
     username: guest
     password: guest
   datasource:
-    url:  jdbc:postgresql://localhost:5432/kyc_db
+    url:  jdbc:postgresql://postgres:5432/kyc_db
     password: postgres
     username: postgres
     driver-class-name: org.postgresql.Driver
