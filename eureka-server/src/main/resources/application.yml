@@ -5,14 +5,12 @@ spring:
 server:
   port: 9099
   address: 0.0.0.0
+  servlet:
+    context-path: /eureka
 
   
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-  instance:
-    hostname: localhost
-  service-url:
-    defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
 

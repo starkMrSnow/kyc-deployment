@@ -13,7 +13,7 @@ RUN ng build  --configuration=production --base-href=/report/
 
 # Stage 2: Serve with NGINX
 FROM nginx:alpine
-COPY --from=builder app/dist/kyc-admin/browser /usr/share/nginx/html
+COPY --from=builder app/dist/kyc-admin/browser /usr/share/nginx/html/report
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

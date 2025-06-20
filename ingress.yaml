@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Content-Type, Authorization, X-Requested-With"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: giktekkyc.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
+          - path: /kyc
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-external
+                port:
+                  number: 8080
+          - path: /admin
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-external
+                port:
+                  number: 8080
+          - path: /report
+            pathType: Prefix
+            backend:
+              service:
+                name: report-frontend
+                port:
+                  number: 80
