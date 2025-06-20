@@ -2,8 +2,8 @@ spring:
   application:
     name: report-service
   datasource:
-    url:  jdbc:postgresql://postgres:5432/kyc_db
-    password: postgres
+    url:  jdbc:postgresql://postgres:5432/kyc_report_db
+    password: stan
     username: postgres
     driver-class-name: org.postgresql.Driver
   jpa:

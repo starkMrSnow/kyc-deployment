@@ -18,7 +18,7 @@ export interface CustomerDto {
 
 @Injectable()
 export class KycService {
-  private baseUrl = 'https://giktekkyc.org/';//base url for the backend
+  private baseUrl = 'https://mevin.online/';//base url for the backend
 
   constructor(private http: HttpClient) {}
 
