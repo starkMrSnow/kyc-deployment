@@ -20,6 +20,7 @@
             "outputPath": "dist/kyc-admin/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "baseHref": "/report/",
             "polyfills": [
               "zone.js"
             ],
@@ -70,7 +71,7 @@
         "serve": {
           "options": {
             "host":"0.0.0.0",
-            "port":4201
+            "port":4200
           },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
@@ -84,7 +85,10 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "kyc-admin:build"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
@@ -96,9 +100,12 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/assets"
               }
             ],
             "styles": [
